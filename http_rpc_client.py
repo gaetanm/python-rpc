@@ -6,7 +6,10 @@ class Client:
         self.host = host
 
     def get(self, resource):
-        return requests.get(self.host + "/" + resource).json()
+        try:
+            return requests.get(self.host + "/" + resource).json()
+        except requests.exceptions.ConnectionError:
+            raise
 
     def time(self):
         return self.get("time")['time']
