@@ -4,6 +4,8 @@ import json
 
 class Client:
     def __init__(self, host):
+        if 'http://' not in host:
+            host = 'http://' + host
         self.host = host
 
     def get(self, resource, payload=None):
