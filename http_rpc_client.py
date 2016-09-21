@@ -39,3 +39,7 @@ class Client:
             return r['result']
         except TypeError:
             raise Exception("not an integer")
+
+    def json_to_xml(self, json_str):
+        r = self.get("json_to_xml", {'json_str': json_str})
+        return r['result']

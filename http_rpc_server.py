@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request
 import time
 import psutil
+import json
+import dicttoxml
 
 app = Flask(__name__)
 
@@ -32,6 +34,13 @@ def sub():
     a = request.args.get('a', 0, type=int)
     b = request.args.get('b', 0, type=int)
     return jsonify(result=(a - b))
+
+@app.route('/json_to_xml')
+def json_to_xml():
+    json_str = request.args.get('json_str', type=str)
+    obj = json.loads(json_str)
+    xml = dicttoxml.dicttoxml(obj)
+    return jsonify(result=xml)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8088)
