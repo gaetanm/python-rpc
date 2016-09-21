@@ -9,7 +9,7 @@ class Client:
         try:
             return requests.get(self.host + "/" + resource, params=payload).json()
         except requests.exceptions.ConnectionError:
-            raise
+            raise Exception("server unreachable")
 
     def time(self):
         return self.get("time")['time']
