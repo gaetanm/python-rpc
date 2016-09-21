@@ -7,6 +7,8 @@ class Client:
         self.host = host
 
     def get(self, resource, payload=None):
+        if payload is None:
+            payload = {}
         try:
             return requests.get(self.host + "/" + resource, params=payload).json()
         except:
