@@ -25,14 +25,14 @@ def hdd_status():
 
 @app.route('/add')
 def add():
-    a = request.args.get('a', 0, type=int)
-    b = request.args.get('b', 0, type=int)
+    a = request.args.get('a', type=int)
+    b = request.args.get('b', type=int)
     return jsonify(result=(a + b))
 
 @app.route('/sub')
 def sub():
-    a = request.args.get('a', 0, type=int)
-    b = request.args.get('b', 0, type=int)
+    a = request.args.get('a', type=int)
+    b = request.args.get('b', type=int)
     return jsonify(result=(a - b))
 
 @app.route('/json_to_xml')
