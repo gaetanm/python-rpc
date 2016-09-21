@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 class Client:
@@ -35,5 +36,9 @@ class Client:
         return r['result']
 
     def json_to_xml(self, json_str):
+        try:
+            json.loads(json_str)
+        except:
+            raise Exception("invalid JSON string")
         r = self.get("json_to_xml", {'json_str': json_str})
         return r['result']
