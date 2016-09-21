@@ -23,9 +23,19 @@ class Client:
         return r['total'], r['used']
 
     def add(self, a, b):
-        r = self.get("add", {'a': a, 'b': b})
-        return r['result']
+        try:
+            a += 1
+            b += 1
+            r = self.get("add", {'a': a, 'b': b})
+            return r['result']
+        except TypeError:
+            raise Exception("not an integer")
 
     def sub(self, a, b):
-        r = self.get("sub", {'a': a, 'b': b})
-        return r['result']
+        try:
+            a += 1
+            b += 1
+            r = self.get("sub", {'a': a, 'b': b})
+            return r['result']
+        except TypeError:
+            raise Exception("not an integer")
